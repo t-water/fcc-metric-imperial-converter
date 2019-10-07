@@ -20,7 +20,7 @@ function ConvertHandler() {
       }
       return false;
     }else{
-      if(num.match(/\./).length <= 1){
+      if(num.match(/\./g).length <= 1){
         return parseFloat(num)
       }
       return false
@@ -36,7 +36,6 @@ function ConvertHandler() {
       return str;
     }
     return false;
-    
   };
   
   this.getReturnUnit = function(initUnit) {
