@@ -85,10 +85,17 @@ function ConvertHandler() {
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-    if(initNum === 1){
-      initUnit = this.spellOutUnit(initUnit)
-      initUnit = initUnit.replace(/s/)
+    function Singularize(unit, number){
+      let expandedUnit = this.SpellOutUnit(unit);
+      if(number == 1){
+        expandedUnit = expandedUnit.replace(/s$/, '')
+        return expandedUnit
+      }else{
+        return expandedUnit
+      }
     }
+    
+    return `${initNum} ${Singularize(initUnit)} converts to ${returnNum} ${Singularize(returnUnit)}`;
   };
   
 }
