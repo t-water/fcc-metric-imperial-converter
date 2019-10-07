@@ -42,7 +42,7 @@ suite('Unit Tests', function(){
     
     test('Invalid Input (double fraction)', function(done) {
       var input = '4//2gal';
-      assert.equal(convertHandler.getNum(input), 'Incorrect Number');
+      assert.equal(convertHandler.getNum(input), false);
       done();
     });
     
@@ -66,7 +66,7 @@ suite('Unit Tests', function(){
     
     test('Unknown Unit Input', function(done) {
       var input = '2.3gals'
-      assert.equal(convertHandler.getUnit(input), "Incorrect Unit")
+      assert.equal(convertHandler.getUnit(input), false)
       done();
     });  
     
@@ -91,7 +91,7 @@ suite('Unit Tests', function(){
       var input = ['gal','l','mi','km','lbs','kg'];
       var expect = ['gallons', 'liters', 'miles', 'kilometers', 'pounds', 'kilograms'];
       input.forEach(function(ele, i) {
-        assert.equal(convertHandler.getReturnUnit(ele), expect[i]);
+        assert.equal(convertHandler.spellOutUnit(ele), expect[i]);
       });
       done();
     });
