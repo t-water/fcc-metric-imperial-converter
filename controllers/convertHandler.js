@@ -8,34 +8,25 @@
 
 function ConvertHandler() {
   
-  this.removeDoubleDecimal = function(num){
-    if(num.match(/\./g) != null){
-        if(num.match(/\./g).length > 1){
-          return false;
-        }
-        return parseFloat(num)
-      }
-      return parseFloat(num)
-  }
-  
   this.getNum = function(input) {
     let num = input.split(/\s*[a-zA-Z]+/)[0];
     if (num === ""){
       return 1;
     }else if(/\//.test(num)){
       let fraction = num.split('/')
-      let numerator = fraction[0];
-      let denominator = fraction[1];
-      if(this.removeDoubleDecimal(numerator) && this.removeDoubleDecimal(denominator)){
-        let result = parseFloat(fraction[0]) / parseFloat(fraction[1]);
-        if(!isNaN(result)){
-          return result
-        }
-        return false
-      }   
+      let result = parseFloat(fraction[0]) / parseFloat(fraction[1]);
+      if(!isNaN(result)){
+        return result
+      }
       return false;
     }else{
-      this.removeDoubleDecimal(num)
+      if(num.match(/\./g) != null){
+        if(num.match(/\./g).length > 1){
+          return false;
+        }
+        return parseFloat(num)
+      }
+      return parseFloat(num)
     }
     return false
   };
@@ -44,7 +35,9 @@ function ConvertHandler() {
     let num = input.split(/[a-zA-Z]/)[0]
     let str = input.split(num)[1].toLowerCase();
     const units = ['gal', 'l', 'lbs', 'kg', 'mi', 'km'];
-    if(units.indexOf(str) !== -1){
+    if(units.indexOf(input.trim().toLowerCase()) !== -1){
+      return input.toLowerCase();
+    }else if(units.indexOf(str) !== -1){
       return str;
     }
     return false;
