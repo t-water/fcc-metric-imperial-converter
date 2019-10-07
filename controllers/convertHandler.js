@@ -23,11 +23,14 @@ function ConvertHandler() {
     return false
   }
   
-  this.getNum = function(input) {
-    if(this.splitInput(input)){
-      return(this.splitInput(input))
+  this.removeZeros = function(num){
+    if(num < 1){
+      return num.replace(/0+$/, '')
     }
-    return false;
+  }
+  
+  this.getNum = function(input) {
+    
   };
   
   this.getUnit = function(input) {

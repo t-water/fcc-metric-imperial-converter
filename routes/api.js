@@ -19,10 +19,10 @@ module.exports = function (app) {
     .get(function (req, res){
       var input = req.query.input;
       var initNum = convertHandler.getNum(input);
+      res.send(initNum);
       var initUnit = convertHandler.getUnit(input);
       var returnNum = convertHandler.convert(initNum, initUnit);
       var returnUnit = convertHandler.getReturnUnit(initUnit);
-      res.send(returnUnit);
       var toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
       //res.json
     });
