@@ -23,7 +23,13 @@ module.exports = function (app) {
       var returnNum = convertHandler.convert(initNum, initUnit);
       var returnUnit = convertHandler.getReturnUnit(initUnit);
       var toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
-      let feedback = {initNum, initUnit, returnNum, returnUnit, toString};
+      let feedback = {"initNum": initNum, "initUnit": initUnit, "returnNum": returnNum, "returnUnit": returnUnit, "string": toString};
+      
+      if(!initUnit){
+        res.send("Incorrect Unit")
+      }else{
+        res.json(feedback)
+      }
     });
     
 };

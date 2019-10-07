@@ -89,8 +89,12 @@ function ConvertHandler() {
     
   };
   
-  this.getString = function(initNum, initUnit, returnNum, returnUnit) {    
-    return `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
+  this.getString = function(initNum, initUnit, returnNum, returnUnit) {
+    if(!initUnit){
+      return 'Incorrect Unit'
+    }else{
+      return `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
+    }
   };
   
 }
