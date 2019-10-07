@@ -21,13 +21,11 @@ function ConvertHandler() {
   };
   
   this.getUnit = function(input) {
+    let num = input.split(/[a-zA-Z]/)[0]
+    let str = input.split(num)[1].toLowerCase();
     const units = ['gal', 'l', 'lbs', 'kg', 'mi', 'km'];
-    if(input.match(/[a-zA-z]+/)){
-      let str = input.match(input.match(/[a-zA-z]+/))[0]
-      if(units.indexOf(str.toLowerCase()) !== -1){
-        return str.toLowerCase()
-      }
-      return false;
+    if(units.indexOf(str) !== -1){
+      return str;
     }
     return false;
     
