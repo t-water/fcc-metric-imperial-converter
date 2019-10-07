@@ -8,6 +8,20 @@
 
 function ConvertHandler() {
   
+  this.splitInput = function(input){
+    let reg = new RegExp(/([0-9]|\s)(?=[a-zA-z])/);
+    let index = input.search(reg);
+    if(index != -1){
+      if(input[index] === ' '){
+        return input.split(' ')
+      }else{
+        let addedSpace = input[index] + ' '
+        return input.replace()
+      }
+    }
+    return false
+  }
+  
   this.getNum = function(input) {
     var result = input.split(' ');
     result = parseFloat(result[0]);
