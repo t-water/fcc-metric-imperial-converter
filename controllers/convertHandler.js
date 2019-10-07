@@ -10,26 +10,43 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     var result = input.split(' ');
-    result = parseInt(result[0]);
-    if(!isNaN(result))
+    result = parseFloat(result[0]);
+    if(!isNaN(result)){
+      return result;
+    }
+    return false;
     
-    return result;
   };
   
   this.getUnit = function(input) {
-    var result;
-    
-    return result;
+    const unitArr = ['gal', 'l', 'lbs', 'kg', 'mi', 'km']
+    var result = input.split(' ');
+    result = result[1];
+    if(unitArr.indexOf(result.toLowerCase()) != -1){
+      return result
+    }    
+    return false;
   };
   
   this.getReturnUnit = function(initUnit) {
-    var result;
-    
-    return result;
+    const units = {
+      'gal': 'l',
+      'l': 'gal',
+      'lbs': 'kg',
+      'kg': 'lbs',
+      'mi': 'km',
+      'km': 'mi'
+    };
+    if(units.hasOwnProperty(initUnit)){
+      return units[initUnit];
+    }    
+    return false;
   };
 
   this.spellOutUnit = function(unit) {
-    var result;
+    const units = {
+      'gal': 'gallon'
+    };
     
     return result;
   };
