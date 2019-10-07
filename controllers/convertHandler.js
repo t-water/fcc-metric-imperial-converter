@@ -31,8 +31,12 @@ function ConvertHandler() {
   };
   
   this.getUnit = function(input) {
+    const units = ['gal', 'l', 'lbs', 'kg', 'mi', 'km'];
     if(this.splitInput(input)){
-      return this.splitInput(input)[1]
+      if(units.indexOf(this.splitInput(input)) !== -1){
+        return this.splitInput(input)[1]
+      }
+      return false
     }
     return false;
   };
