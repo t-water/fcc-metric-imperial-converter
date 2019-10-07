@@ -45,25 +45,50 @@ function ConvertHandler() {
 
   this.spellOutUnit = function(unit) {
     const units = {
-      'gal': 'gallon'
+      'gal': 'gallons',
+      'l': 'liters',
+      'lbs': 'pounds',
+      'kg': 'kilograms',
+      'mi': 'miles',
+      'km': 'kilometers'
     };
-    
-    return result;
+    if(units.hasOwnProperty(unit)){
+      return units[unit];
+    }
+    return false;
   };
   
   this.convert = function(initNum, initUnit) {
     const galToL = 3.78541;
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
-    var result;
     
-    return result;
+    const conversions = {
+      'gal': [galToL, 'multiply'],
+      'l': [galToL, 'divide'],
+      'lbs': [lbsToKg, 'multiply'],
+      'kg': [lbsToKg, 'divide'],
+      'mi': [miToKm, 'multiply'],
+      'km': [miToKm, 'divide']
+    }
+    
+    if(conversions.hasOwnProperty(initUnit)){
+      if(conversions[initUnit][1] === 'multiply'){
+        return initNum * conversions[initUnit][0];
+      }else if(conversions[initUnit][1] === 'divide'){
+        return initNum / conversions[initUnit][0];
+      }
+      return false;
+    }
+    return false
+    
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-    var result;
-    
-    return result;
+    if(initNum === 1){
+      initUnit = this.spellOutUnit(initUnit)
+      initUnit = initUnit.replace(/s/)
+    }
   };
   
 }
