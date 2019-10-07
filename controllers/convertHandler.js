@@ -14,10 +14,18 @@ function ConvertHandler() {
       return 1;
     }else if(/\//.test(num)){
       let fraction = num.split('/')
-      return parseFloat(fraction[0]) / parseFloat(fraction[1]);
+      let result = parseFloat(fraction[0]) / parseFloat(fraction[1]);
+      if(!isNaN(result)){
+        return result
+      }
+      return false;
     }else{
-      return parseFloat(num)
+      if(num.match(/\./).length <= 1){
+        return parseFloat(num)
+      }
+      return false
     }
+    return false
   };
   
   this.getUnit = function(input) {

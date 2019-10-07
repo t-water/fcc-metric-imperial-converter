@@ -25,8 +25,12 @@ module.exports = function (app) {
       var toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
       let feedback = {"initNum": initNum, "initUnit": initUnit, "returnNum": returnNum, "returnUnit": returnUnit, "string": toString};
       
-      if(!initUnit){
+      if(!initUnit && !initNum){
+        res.send("Incorrect Number and Unit")
+      }else if(!initUnit){
         res.send("Incorrect Unit")
+      }else if(!initNum){
+        res.send("Incorrect Number")
       }else{
         res.json(feedback)
       }
