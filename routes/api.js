@@ -24,6 +24,10 @@ module.exports = function (app) {
       var returnNum = convertHandler.convert(initNum, initUnit);
       var returnUnit = convertHandler.getReturnUnit(initUnit);
       var toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
+    
+      if(!convertHandler.splitInput(input)){
+        return res.send("Invalid Input")
+      }
       //res.json
     });
     

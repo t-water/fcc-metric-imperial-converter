@@ -8,29 +8,23 @@
 
 function ConvertHandler() {
   
-  this.splitInput = function(input){
-    let reg = new RegExp(/([0-9]|\s)(?=[a-zA-z])/);
-    let index = input.search(reg);
-    if(index != -1){
-      if(input[index] === ' '){
-        return input.split(' ')
-      }else{
-        let addedSpace = input[index] + ' ';
-        addedSpace = input.replace(reg, addedSpace);
-        return addedSpace.split(' ')
-      }
-    }
-    return false
-  }
-  
-  this.removeZeros = function(num){
+  //glitch throws a 500 error every time I try to convert a string to a number, so this function uses weird solutions to account for that
+  this.convertToNum = function(num){
+    num = parseInt(num).toFixed(7);
     if(num < 1){
-      return num.replace(/0+$/, '')
+      num  = num + ' '
+      num.replace(/0+$/, '')
     }
   }
   
   this.getNum = function(input) {
-    
+    let num = input.split(/\s*/)[0];
+    if (num === ""){
+      return 1;
+    }else if(/\//.test(num)){
+      let fraction = num.split('/')
+      
+    }
   };
   
   this.getUnit = function(input) {
