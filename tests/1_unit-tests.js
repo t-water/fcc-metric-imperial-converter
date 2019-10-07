@@ -25,27 +25,31 @@ suite('Unit Tests', function(){
     test('Decimal Input', function(done) {
       var input = '2.3km';
       assert.equal(convertHandler.getNum(input), 2.3);
-      //done();
+      done();
     });
     
     test('Fractional Input', function(done) {
-      var input 
-      //done();
+      var input = '3/5gal';
+      assert.equal(convertHandler.getNum(input), 0.6);
+      done();
     });
     
     test('Fractional Input w/ Decimal', function(done) {
-      
-      //done();
+      var input = '6.0/3.0l';
+      assert.equal(convertHandler.getNum(input), 2);
+      done();
     });
     
     test('Invalid Input (double fraction)', function(done) {
-      
-      //done();
+      var input = '4//2gal';
+      assert.equal(convertHandler.getNum(input), 'Incorrect Number');
+      done();
     });
     
     test('No Numerical Input', function(done) {
-      
-      //done();
+      var input = 'km';
+      assert.equal(convertHandler.getNum(input), 1);
+      done;
     }); 
     
   });
