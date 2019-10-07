@@ -15,30 +15,26 @@ function ConvertHandler() {
       if(input[index] === ' '){
         return input.split(' ')
       }else{
-        let addedSpace = input[index] + ' '
-        return input.replace()
+        let addedSpace = input[index] + ' ';
+        addedSpace = input.replace(reg, addedSpace);
+        return addedSpace.split(' ')
       }
     }
     return false
   }
   
   this.getNum = function(input) {
-    var result = input.split(' ');
-    result = parseFloat(result[0]);
-    if(!isNaN(result)){
-      return result;
+    if(this.splitInput(input)){
+      return this.splitInput(input)[0]
     }
     return false;
     
   };
   
   this.getUnit = function(input) {
-    const unitArr = ['gal', 'l', 'lbs', 'kg', 'mi', 'km']
-    var result = input.split(' ');
-    result = result[1];
-    if(unitArr.indexOf(result.toLowerCase()) != -1){
-      return result
-    }    
+    if(this.splitInput(input)){
+      return this.splitInput(input)[1]
+    }
     return false;
   };
   
