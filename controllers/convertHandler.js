@@ -19,6 +19,9 @@ function ConvertHandler() {
   }
   
   this.getNum = function(input) {
+    if(input === ''){
+      return false;
+    }
     let num = input.split(/\s*[a-zA-Z]+/)[0];
     if (num === ""){
       return 1;
@@ -40,6 +43,9 @@ function ConvertHandler() {
   };
   
   this.getUnit = function(input) {
+    if(input === ''){
+      return false;
+    }
     let num = input.split(/[a-zA-Z]/)[0]
     let str = input.split(num)[1].toLowerCase();
     const units = ['gal', 'l', 'lbs', 'kg', 'mi', 'km'];
@@ -111,6 +117,8 @@ function ConvertHandler() {
     if(!initUnit){
       return 'Incorrect Unit'
     }else{
+      initNum = +initNum.toFixed(5);
+      returnNum = +returnNum.toFixed(5);
       return `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
     }
   };
