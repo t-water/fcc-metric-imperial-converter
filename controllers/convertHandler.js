@@ -27,6 +27,9 @@ function ConvertHandler() {
       return 1;
     }else if(/\//.test(num)){
       let fraction = num.split('/')
+      if(fraction.length() > 2){
+        
+      }
       let numerator = fraction[0];
       let denominator = fraction[1];
       if(this.removeExtraDecimals(numerator) && this.removeExtraDecimals(denominator)){
@@ -37,7 +40,10 @@ function ConvertHandler() {
       }
       return false;
     }else{
-      return this.removeExtraDecimals(num)
+      if(!isNaN(num)){
+        return this.removeExtraDecimals(num)
+      }
+      return false;
     }
     return false
   };
