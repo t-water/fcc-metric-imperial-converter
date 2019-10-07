@@ -66,7 +66,7 @@ suite('Unit Tests', function(){
     
     test('Unknown Unit Input', function(done) {
       var input = '2.3gals'
-      asser.equal(convertHandler.getUnit(input), "Incorrect Unit")
+      assert.equal(convertHandler.getUnit(input), "Incorrect Unit")
       done();
     });  
     

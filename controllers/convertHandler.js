@@ -36,7 +36,7 @@ function ConvertHandler() {
     let str = input.split(num)[1].toLowerCase();
     const units = ['gal', 'l', 'lbs', 'kg', 'mi', 'km'];
     if(units.indexOf(input.trim().toLowerCase()) !== -1){
-      return input.toLowerCase();
+      return input.trim().toLowerCase();
     }else if(units.indexOf(str) !== -1){
       return str;
     }
