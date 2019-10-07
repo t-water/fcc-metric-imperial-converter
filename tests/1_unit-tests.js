@@ -23,12 +23,13 @@ suite('Unit Tests', function(){
     });
     
     test('Decimal Input', function(done) {
-      
+      var input = '2.3km';
+      assert.equal(convertHandler.getNum(input), 2.3);
       //done();
     });
     
     test('Fractional Input', function(done) {
-      
+      var input 
       //done();
     });
     
