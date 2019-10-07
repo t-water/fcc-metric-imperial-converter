@@ -20,10 +20,13 @@ function ConvertHandler() {
       }
       return false;
     }else{
-      if(num.match(/\./g).length <= 1){
+      if(num.match(/\./g) != null){
+        if(num.match(/\./g).length > 1){
+          return false;
+        }
         return parseFloat(num)
       }
-      return false
+      return parseFloat(num)
     }
     return false
   };
