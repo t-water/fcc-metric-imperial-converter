@@ -25,10 +25,9 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     if(this.splitInput(input)){
-      return this.splitInput(input)[0]
+      return parseInt(this.splitInput(input)[0])
     }
     return false;
-    
   };
   
   this.getUnit = function(input) {
