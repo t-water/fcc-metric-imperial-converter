@@ -8,22 +8,15 @@
 
 function ConvertHandler() {
   
-  //glitch throws a 500 error every time I try to convert a string to a number, so this function uses weird solutions to account for that
-  this.convertToNum = function(num){
-    num = parseInt(num).toFixed(7);
-    if(num < 1){
-      num  = num + ' '
-      num.replace(/0+$/, '')
-    }
-  }
-  
   this.getNum = function(input) {
-    let num = input.split(/\s*/)[0];
+    let num = input.split(/\s*[a-zA-Z]+/)[0];
     if (num === ""){
       return 1;
     }else if(/\//.test(num)){
       let fraction = num.split('/')
-      
+      return parseFloat(fraction[0]).toFixed(7) / parseFloat(fraction[1]).toFixed(7);
+    }else{
+      return parseFloat(num).toFixed(7)
     }
   };
   
