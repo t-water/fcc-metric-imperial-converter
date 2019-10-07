@@ -9,7 +9,9 @@
 function ConvertHandler() {
   
   this.getNum = function(input) {
-    var result;
+    var result = input.split(' ');
+    result = parseInt(result[0]);
+    if(!isNaN(result))
     
     return result;
   };
