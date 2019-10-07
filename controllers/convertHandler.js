@@ -14,21 +14,19 @@ function ConvertHandler() {
       return 1;
     }else if(/\//.test(num)){
       let fraction = num.split('/')
-      return parseFloat(fraction[0]).toFixed(7) / parseFloat(fraction[1]).toFixed(7);
+      return parseFloat(fraction[0]) / parseFloat(fraction[1]);
     }else{
-      return parseFloat(num).toFixed(7)
+      return parseFloat(num)
     }
   };
   
   this.getUnit = function(input) {
     const units = ['gal', 'l', 'lbs', 'kg', 'mi', 'km'];
-    if(this.splitInput(input)){
-      if(units.indexOf(this.splitInput(input)) !== -1){
-        return this.splitInput(input)[1]
-      }
-      return false
+    if(input.match(/[a-zA-z]+/)){
+      return = input.match(input.match(/[a-zA-z]+/))
     }
     return false;
+    
   };
   
   this.getReturnUnit = function(initUnit) {
