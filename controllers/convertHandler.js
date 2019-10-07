@@ -25,9 +25,7 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     if(this.splitInput(input)){
-      let num = this.splitInput(input)[0];
-      console.log(num)
-      return num;
+      return(parseFloat(this.splitInput(input)[0]).toFixed(3))
     }
     return false;
   };
