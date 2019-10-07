@@ -23,7 +23,11 @@ function ConvertHandler() {
   this.getUnit = function(input) {
     const units = ['gal', 'l', 'lbs', 'kg', 'mi', 'km'];
     if(input.match(/[a-zA-z]+/)){
-      return = input.match(input.match(/[a-zA-z]+/))
+      let str = input.match(input.match(/[a-zA-z]+/))[0]
+      if(units.indexOf(str.toLowerCase()) !== -1){
+        return str.toLowerCase()
+      }
+      return false;
     }
     return false;
     
@@ -86,17 +90,19 @@ function ConvertHandler() {
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-    function Singularize(unit, number){
-      let expandedUnit = this.SpellOutUnit(unit);
-      if(number == 1){
-        expandedUnit = expandedUnit.replace(/s$/, '')
-        return expandedUnit
-      }else{
-        return expandedUnit
-      }
-    }
+    // function Singularize(unit, number){
+    //   let expandedUnit = this.SpellOutUnit(unit);
+    //   return expandedUnit
+    //   // if(number == 1){
+    //   //   expandedUnit = expandedUnit.replace(/s$/, '')
+    //   //   return expandedUnit
+    //   // }else{
+    //   //   return expandedUnit
+    //   // }
+    // }
+    return this.
     
-    return `${initNum} ${Singularize(initUnit)} converts to ${returnNum} ${Singularize(returnUnit)}`;
+    // return `${initNum} ${initUnit} converts to ${returnNum} ${returnUnit}`;
   };
   
 }
