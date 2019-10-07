@@ -27,8 +27,8 @@ function ConvertHandler() {
       return 1;
     }else if(/\//.test(num)){
       let fraction = num.split('/')
-      if(fraction.length() > 2){
-        
+      if(fraction.length > 2){
+        return false
       }
       let numerator = fraction[0];
       let denominator = fraction[1];
@@ -123,8 +123,13 @@ function ConvertHandler() {
     if(!initUnit){
       return 'Incorrect Unit'
     }else{
-      initNum = +initNum.toFixed(5);
-      returnNum = +returnNum.toFixed(5);
+      if(initNum !== false){
+        initNum = +initNum.toFixed(5);
+      }
+      if(returnNum !== false){
+        returnNum = +returnNum.toFixed(5);
+      }      
+      
       return `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
     }
   };
