@@ -89,20 +89,8 @@ function ConvertHandler() {
     
   };
   
-  this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-    // function Singularize(unit, number){
-    //   let expandedUnit = this.SpellOutUnit(unit);
-    //   return expandedUnit
-    //   // if(number == 1){
-    //   //   expandedUnit = expandedUnit.replace(/s$/, '')
-    //   //   return expandedUnit
-    //   // }else{
-    //   //   return expandedUnit
-    //   // }
-    // }
-    return this.
-    
-    // return `${initNum} ${initUnit} converts to ${returnNum} ${returnUnit}`;
+  this.getString = function(initNum, initUnit, returnNum, returnUnit) {    
+    return `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
   };
   
 }
