@@ -8,25 +8,33 @@
 
 function ConvertHandler() {
   
-  this.getNum = function(input) {
-    let num = input.split(/\s*[a-zA-Z]+/)[0];
-    if (num === ""){
-      return 1;
-    }else if(/\//.test(num)){
-      let fraction = num.split('/')
-      let result = parseFloat(fraction[0]) / parseFloat(fraction[1]);
-      if(!isNaN(result)){
-        return result
-      }
-      return false;
-    }else{
-      if(num.match(/\./g) != null){
+  this.removeExtraDecimals = function(num){
+    if(num.match(/\./g) != null){
         if(num.match(/\./g).length > 1){
           return false;
         }
         return parseFloat(num)
       }
       return parseFloat(num)
+  }
+  
+  this.getNum = function(input) {
+    let num = input.split(/\s*[a-zA-Z]+/)[0];
+    if (num === ""){
+      return 1;
+    }else if(/\//.test(num)){
+      let fraction = num.split('/')
+      let numerator = fraction[0];
+      let denominator = fraction[1];
+      if(this.removeExtraDecimals(numerator) && this.removeExtraDecimals(denominator)){
+        let result = parseFloat(fraction[0]) / parseFloat(fraction[1]);
+        if(!isNaN(result)){
+          return result
+        }
+      }
+      return false;
+    }else{
+      return this.removeExtraDecimals(num)
     }
     return false
   };
