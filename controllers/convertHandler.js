@@ -48,20 +48,41 @@ function ConvertHandler() {
     return false
   };
   
-  this.getUnit = function(input) {
-    let num = input.split(/[a-zA-Z]/)[0];
-    let str = input.split(num)[1].toLowerCase();
+  this.getUnit = function(input){
     const units = ['gal', 'l', 'lbs', 'kg', 'mi', 'km'];
-    if(input === ''){
-      return false;
+    
+    if(/[0-9]/.test(input)){
+      let num = input.split(/[a-zA-Z]/)[0];
+      let str = input.split(num)[1].toLowerCase();
+    }else{
+      let str = input.trim();
     }
-    if(units.indexOf(input.trim().toLowerCase()) !== -1){
-      return input.trim().toLowerCase();
-    }else if(units.indexOf(str) !== -1){
-      return str;
-    }
+    if(units.indexOf(str) !== -1){
+        return str;
+      }
     return false;
-  };
+  }
+  
+  // this.getUnit = function(input) {
+  //   let num = input.split(/[a-zA-Z]/)[0];
+  //   const units = ['gal', 'l', 'lbs', 'kg', 'mi', 'km'];
+  //   if(input === ''){
+  //     return false;
+  //   }else if(input.length == 1){
+  //     if(units.indexOf(input) !== -1){
+  //       return input.toLowerCase();
+  //     }
+  //     return false;
+  //   }else{
+  //     let str = input.split(num)[1].toLowerCase();
+  //     if(units.indexOf(input.trim().toLowerCase()) !== -1){
+  //       return input.trim().toLowerCase();
+  //     }else if(units.indexOf(str) !== -1){
+  //       return str;
+  //     }
+  //   }
+  //   return false;
+  // };
   
   this.getReturnUnit = function(initUnit) {
     const units = {
