@@ -19,10 +19,11 @@ function ConvertHandler() {
   }
   
   this.getNum = function(input) {
+    let num = input.split(/\s*[a-zA-Z]+/)[0];
+    
     if(input === ''){
       return false;
     }
-    let num = input.split(/\s*[a-zA-Z]+/)[0];
     if (num === ""){
       return 1;
     }else if(/\//.test(num)){
@@ -50,39 +51,18 @@ function ConvertHandler() {
   
   this.getUnit = function(input){
     const units = ['gal', 'l', 'lbs', 'kg', 'mi', 'km'];
-    
+    let str = ''
     if(/[0-9]/.test(input)){
       let num = input.split(/[a-zA-Z]/)[0];
-      let str = input.split(num)[1].toLowerCase();
+      str = input.split(num)[1].toLowerCase();
     }else{
-      let str = input.trim();
+      str = input.trim().toLowerCase();
     }
     if(units.indexOf(str) !== -1){
         return str;
-      }
+    }
     return false;
   }
-  
-  // this.getUnit = function(input) {
-  //   let num = input.split(/[a-zA-Z]/)[0];
-  //   const units = ['gal', 'l', 'lbs', 'kg', 'mi', 'km'];
-  //   if(input === ''){
-  //     return false;
-  //   }else if(input.length == 1){
-  //     if(units.indexOf(input) !== -1){
-  //       return input.toLowerCase();
-  //     }
-  //     return false;
-  //   }else{
-  //     let str = input.split(num)[1].toLowerCase();
-  //     if(units.indexOf(input.trim().toLowerCase()) !== -1){
-  //       return input.trim().toLowerCase();
-  //     }else if(units.indexOf(str) !== -1){
-  //       return str;
-  //     }
-  //   }
-  //   return false;
-  // };
   
   this.getReturnUnit = function(initUnit) {
     const units = {

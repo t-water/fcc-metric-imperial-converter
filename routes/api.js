@@ -26,11 +26,11 @@ module.exports = function (app) {
       let feedback = {"initNum": initNum, "initUnit": initUnit, "returnNum": returnNum, "returnUnit": returnUnit, "string": toString};
       
       if(!initUnit && !initNum){
-        res.send("Incorrect Number and Unit")
+        res.send("Invalid Number and Unit")
       }else if(!initUnit){
-        res.send("Incorrect Unit")
+        res.send("Invalid Unit")
       }else if(!initNum){
-        res.send("Incorrect Number")
+        res.send("Invalid Number")
       }else{
         res.json(feedback)
       }
