@@ -7,7 +7,6 @@ var cors        = require('cors');
 var helmet = require('helmet')
 
 var apiRoutes         = require('./routes/api.js');
-var fccTestingRoutes  = require('./routes/fcctesting.js');
 
 var app = express();
 
@@ -26,13 +25,8 @@ app.route('/')
     res.sendFile(process.cwd() + '/views/index.html');
   });
 
-//For FCC testing purposes
-fccTestingRoutes(app);
-
-//Routing for API 
 apiRoutes(app);  
-    
-//404 Not Found Middleware
+
 app.use(function(req, res, next) {
   res.status(404)
     .type('text')
