@@ -1,11 +1,3 @@
-/*
-*
-*
-*       Complete the API routing below
-*
-*
-*/
-
 'use strict';
 
 var expect = require('chai').expect;
@@ -26,10 +18,13 @@ module.exports = function (app) {
       let feedback = {"initNum": initNum, "initUnit": initUnit, "returnNum": returnNum, "returnUnit": returnUnit, "string": toString};
       
       if(!initUnit && !initNum){
+        
         res.send("Invalid Number and Unit")
       }else if(!initUnit){
+        
         res.send("Invalid Unit")
       }else if(!initNum){
+        
         res.send("Invalid Number")
       }else{
         res.json(feedback)
