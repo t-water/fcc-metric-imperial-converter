@@ -16,7 +16,7 @@
   <body>
     <div class = "container-fluid">
       <h1 class = "text-center">Metric-Imperial Converter</h1>
-      <p class = "text-center">Accepts Integers, Fractions, and Decimals. Units Accepted: mi, km, gal, l, lbs, kg</p>
+      <p class = "text-center">Accepts Integers, Fractions (with /), and Decimals. Units Accepted: mi, km, gal, l, lbs, kg</p>
       <form id="convertForm">
         <div class = "form-row">
           <input type="text" id="convertField" class = "form-control col-12 col-md-9 col-lg-10 mb-3 mb-md-0" name="input" placeholder="3.1mi">
@@ -38,7 +38,12 @@
             type: 'get',
             data: $('#convertForm').serialize(),
             success: function(data) {
+              $('#result').removeClass('text-danger').addClass('text-success')
               $('#result').text(data.string || data);
+            },
+            error: function(request, message, error){
+              $('#result').removeClass('text-success').addClass('text-danger')
+              $('#result').text(request.responseText)
             }
           });
         });

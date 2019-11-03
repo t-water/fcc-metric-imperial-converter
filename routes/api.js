@@ -18,13 +18,13 @@ module.exports = function (app) {
       let feedback = {"initNum": initNum, "initUnit": initUnit, "returnNum": returnNum, "returnUnit": returnUnit, "string": toString};
       
       if(!initUnit && !initNum){
-        
+        res.statusCode = 404;
         res.send("Invalid Number and Unit")
       }else if(!initUnit){
-        
+        res.statusCode = 404;
         res.send("Invalid Unit")
       }else if(!initNum){
-        
+        res.statusCode = 404;
         res.send("Invalid Number")
       }else{
         res.json(feedback)
