@@ -42,11 +42,12 @@ function ConvertHandler() {
   };
   
   this.getUnit = function(input){
-    const units = ['gal', 'l', 'lbs', 'kg', 'mi', 'km'];
+    // const units = ['gal', 'l', 'lbs', 'kg', 'mi', 'km'];
+    const units = ['gal', 'gallon', 'gallons', 'l', '''lbs', 'kg', 'mi', 'km'];
     let str = ''
     if(/[0-9]/.test(input)){
       let num = input.split(/[a-zA-Z]/)[0];
-      str = input.split(num)[1].toLowerCase();
+      str = input.replace(num, '')
     }else{
       str = input.trim().toLowerCase();
     }
