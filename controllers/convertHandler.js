@@ -97,37 +97,23 @@ function ConvertHandler() {
     const galToL = 3.78541;
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
+    let unit = this.spellOutUnit(initUnit)
     
     const conversions = {
-      'gal': [galToL, 'multiply'],
-      'gallon': [galToL, 'multiply'],
       'gallons': [galToL, 'multiply'],
-      'l': [galToL, 'divide'],
-      'liter': [galToL, 'divide'],
-      'litre': [galToL, 'divide'],
       'liters': [galToL, 'divide'],
       'litres': [galToL, 'divide'],
-      'lbs': [lbsToKg, 'multiply'],
-      'pound': [lbsToKg, 'multiply'],
       'pounds': [lbsToKg, 'multiply'],
-      'kg': [lbsToKg, 'divide'],
-      'kilo': [lbsToKg, 'divide'],
-      'kilogram': [lbsToKg, 'divide'],
-      'kilos': [lbsToKg, 'divide'],
       'kilograms': [lbsToKg, 'divide'],
-      'mi': [miToKm, 'multiply'],
-      'mile': [miToKm, 'multiply'],
       'miles': [miToKm, 'multiply'],
-      'km': [miToKm, 'divide'],
-      'kilometer': [miToKm, 'divide'],
       'kilometers': [miToKm, 'divide'],
     }
     
-    if(conversions.hasOwnProperty(initUnit)){
-      if(conversions[initUnit][1] === 'multiply'){
-        return initNum * conversions[initUnit][0];
-      }else if(conversions[initUnit][1] === 'divide'){
-        return initNum / conversions[initUnit][0];
+    if(conversions.hasOwnProperty(unit)){
+      if(conversions[unit][1] === 'multiply'){
+        return initNum * conversions[unit][0];
+      }else if(conversions[unit][1] === 'divide'){
+        return initNum / conversions[unit][0];
       }
       return false;
     }
@@ -144,9 +130,23 @@ function ConvertHandler() {
       }
       if(returnNum !== false){
         returnNum = +returnNum.toFixed(5);
-      }      
+      }     
+      if(initNum == 1){
+        initUnit = this.spellOutUnit(initUnit).replace(/s$/, '')
+      }else{
+        initUnit = this.spellOutUnit(initUnit)
+      }
+      if(returnNum == 1){
+        returnUnit = this.spellOutUnit(returnUnit).replace(/s$/, '')
+      }else{
+        returnUnit = this.spellOutUnit(returnUnit)
+      }
       
-      return `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
+      if(!initNum || !initUnit || !returnNum || !returnUnit){
+        return 'Conversion Error'
+      }else{
+        return `${initNum} ${initUnit} converts to ${returnNum} ${returnUnit}`;
+      }
     }
   };
 }

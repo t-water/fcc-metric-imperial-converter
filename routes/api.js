@@ -26,6 +26,9 @@ module.exports = function (app) {
       }else if(!initNum){
         res.statusCode = 404;
         res.send("Invalid Number")
+      }else if(toString == "Conversion Error"){
+        res.statusCode = 404;
+        res.send('Conversion Error')
       }else{
         res.json(feedback)
       }
