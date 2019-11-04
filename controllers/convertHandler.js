@@ -138,9 +138,10 @@ function ConvertHandler() {
       'kilograms': [lbsToKg, 'divide'],
       'mi': [miToKm, 'multiply'],
       'mile': [miToKm, 'multiply'],
-      'mi': [miToKm, 'multiply'],
       'miles': [miToKm, 'multiply'],
-      'km': [miToKm, 'divide']
+      'km': [miToKm, 'divide'],
+      'kilometer': [miToKm, 'divide'],
+      'kilometers': [miToKm, 'divide'],
     }
     
     if(conversions.hasOwnProperty(initUnit)){
