@@ -42,7 +42,6 @@ function ConvertHandler() {
   };
   
   this.getUnit = function(input){
-    // const units = ['gal', 'l', 'lbs', 'kg', 'mi', 'km'];
     const units = ['gal', 'gallon', 'gallons', 'l', 'liter', 'litre', 'liters', 'litres', 'lbs', 'pound', 'pounds', 'kg', 'kilo', 'kilogram', 'kilos', 'kilograms', 'mi', 'mile', 'miles', 'km', 'kilometer', 'kilometers'];
     let str = ''
     if(/[0-9]/.test(input)){
@@ -58,14 +57,6 @@ function ConvertHandler() {
   }
   
   this.getReturnUnit = function(initUnit) {
-    // const units = {
-    //   'gal': 'l',
-    //   'l': 'gal',
-    //   'lbs': 'kg',
-    //   'kg': 'lbs',
-    //   'mi': 'km',
-    //   'km': 'mi'
-    // };
      const units = {
       'l': ['gal', 'gallon', 'gallons'],
       'gal': ['l', 'liter', 'litre', 'liters', 'litres'],
@@ -81,21 +72,9 @@ function ConvertHandler() {
       }
     })
     return unit
-    // if(units.hasOwnProperty(initUnit)){
-    //   return units[initUnit];
-    // }    
-    // return false;
   };
 
   this.spellOutUnit = function(unit) {
-    // const units = {
-    //   'gal': 'gallons',
-    //   'l': 'liters',
-    //   'lbs': 'pounds',
-    //   'kg': 'kilograms',
-    //   'mi': 'miles',
-    //   'km': 'kilometers'
-    // };
     const units = {
       'gallons': ['gal', 'gallon', 'gallons'],
       'liters': ['l', 'liter', 'liters'],
@@ -170,7 +149,6 @@ function ConvertHandler() {
       return `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
     }
   };
-  
 }
 
 module.exports = ConvertHandler;
