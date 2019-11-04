@@ -14,7 +14,6 @@ module.exports = function (app) {
       var initUnit = convertHandler.getUnit(input);
       var returnNum = convertHandler.convert(initNum, initUnit);
       var returnUnit = convertHandler.getReturnUnit(initUnit);
-      res.json(returnUnit)
       var toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
       let feedback = {"initNum": initNum, "initUnit": initUnit, "returnNum": returnNum, "returnUnit": returnUnit, "string": toString};
       

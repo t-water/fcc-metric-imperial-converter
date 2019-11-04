@@ -74,11 +74,13 @@ function ConvertHandler() {
       'km': ['mi', 'mile', 'miles'],
       'mi': ['km', 'kilometer', 'kilometers']
     };
+    let unit = ''
     Object.keys(units).forEach(x => {
       if(units[x].indexOf(initUnit) !== -1){
-        return x
+        unit = x
       }
     })
+    return unit
     // if(units.hasOwnProperty(initUnit)){
     //   return units[initUnit];
     // }    
@@ -102,12 +104,14 @@ function ConvertHandler() {
       'kilograms': ['kg', 'kilo', 'kilos', 'kilogram', 'kilograms'],
       'miles': ['mi', 'mile', 'miles'],
       'kilometers': ['km', 'kilometer', 'kilometers'],    
-    };    
+    };
+    let spelledOutUnit = ''
     Object.keys(units).forEach(x => {
       if(units[x].indexOf(unit) > -1){
-        return x
+        spelledOutUnit = x
       }
     })
+    return spelledOutUnit
   };
   
   this.convert = function(initNum, initUnit) {
@@ -117,11 +121,25 @@ function ConvertHandler() {
     
     const conversions = {
       'gal': [galToL, 'multiply'],
+      'gallon': [galToL, 'multiply'],
+      'gallons': [galToL, 'multiply'],
       'l': [galToL, 'divide'],
+      'liter': [galToL, 'divide'],
+      'litre': [galToL, 'divide'],
+      'liters': [galToL, 'divide'],
+      'litres': [galToL, 'divide'],
       'lbs': [lbsToKg, 'multiply'],
+      'pound': [lbsToKg, 'multiply'],
+      'pounds': [lbsToKg, 'multiply'],
       'kg': [lbsToKg, 'divide'],
+      'kilo': [lbsToKg, 'divide'],
+      'kilogram': [lbsToKg, 'divide'],
+      'kilos': [lbsToKg, 'divide'],
+      'kilograms': [lbsToKg, 'divide'],
       'mi': [miToKm, 'multiply'],
-      'miles': [miToKm, 'mulitply'],
+      'mile': [miToKm, 'multiply'],
+      'mi': [miToKm, 'multiply'],
+      'miles': [miToKm, 'multiply'],
       'km': [miToKm, 'divide']
     }
     
